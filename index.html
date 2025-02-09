@@ -1,0 +1,641 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+.text-container {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0;
+    cursor: pointer;
+    border-radius: 8px;
+    tabindex="0";
+    padding: 20px;
+}
+
+.text-container:focus,
+.text-container:hover {
+    background-color: #000;
+}
+
+.text-container:active {
+    background-color: #000;
+}
+
+.text-container.visible {
+    opacity: 1;
+}
+
+</style><title>说谎</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='谎'><span>谎</span></h1><p><span>我是一个差生，仅仅因为处在这个谎的世界。</span></p><h2 id='另一半'><span>另一半</span></h2><p><span>在被人们称作青春期的年纪，总是会有期待另一半的想法。我自然而然也在此列。但我的颜值、经济和成绩都使我没有资格成为其中的一员，于是就只能在小说之中寻找自我安慰。很巧的是，我有写日记的习惯，写着写着，便在其中时不时填上一两个小说才有的桥段，幻想自己是其中的男主，写着写着，便把日记写成了小说。江夏就是其中女主角的名字。为此，我上网买了好几本厚厚的速记本，只要得空，便去构建属于自己的空间。</span></p><p><span>从此，班上的同学都开始注意到我在课间的奋笔勤书，老师们也不例外。于是被顺理成章地认定是基础不好、上进心强的学生之一，莫名其妙的多出了很多开小灶的机会。久了之后，我就又莫名其妙的包上发试卷、数练习的活，可能因为老师们在课间都能逮到的人只有我了吧。</span></p><p><span>在学校永远都想不到的不仅有数学选填压轴的答案，还有课间情侣们的约会地点。可以是楼梯口的转角，也可以是油印室的门口。不时可以看见有两个人在那门口拉拉扯扯，你侬我侬。女生总会来一句：”你先数吧。“男生都会回一句：”我不急的。“我只能面无表情说一句：”同学，我急，我先数吧。“</span></p><p><span>数完卷子回到班级，便看见一撮人围在我的座位附近，中间的一人拿着我的速写本，大声朗读着那篇两万多字还未完结的小说。将那叠试卷摔在讲台上，巨大的声响引起了那些人的注意。我走下去抢，他们便把本子丢来丢去，像戏弄小狗那般。后来我干脆放弃，在位置上冷眼观看他们那栩栩如生的表演。</span></p><p><span>”于是，我在一个下午拦住了江夏……“</span></p><p><span>”江夏不是A班的那个学霸么？“</span></p><p><span>”原来我们班的大作家喜欢男的呀！“</span></p><p><span>那一句句话，顺着我留在速记本上的笔笔字迹，直直地扎向我的梦想、我的内心、我的点点滴滴。</span></p><p><span>从此，我在班上便没有了名字，只有一个谎言一般的外号。</span></p><p><span>”大作家，你这数学做的挺好的呀，竟然快到50了。“”大作家，我今天看到你另一半了哦~“”大作家……”被当作下课偷偷学习的，成为老师口中榜样的差生莫不过是这个结局。刚开始我还在耐心的和他们解释，但不会真的有人听完我的解释。反反复复，最终还是放下祥林嫂的位置，对他们的谎言冷漠相待。</span></p><p><span>但错位的是，这些玩笑话还是传到了老师耳里。</span></p><h2 id='夏中江'><span>夏中江</span></h2><p><span>又是一个夏天，又被叫进了办公室。唯一例外的是除了班主任外，还多了一个聪明绝顶的老师。前面还是照常的错误分析，但我听到最后，终于还是听到了不一样的东西，我实在没听清那个老师中间对我说了什么，只记得那个老师的语气比班主任的凶，只记得频繁的点头，只记得最后一句：“别在这个时候想七想八，就算你们有可能，你也配不上。”那个老师说完这句就起身走掉，留着我和班主任大眼瞪小眼。最后班主任叹了一口气，让我回去好好努力学习。</span></p><p><span>我根本就没想过这事，他是A班的，我是F班的，两个人根本不认识，而且我很正常，不像那个老师竟能在两个男生间找到不正常的关系。也更别说践行了。</span></p><p><span>可很神奇的是，我在走出校门的时候刚好看见了江夏，似乎是在等待家里人的接送。他也正好看向了我，但是我只能选择徒步回家。经过他时，闻到一股桂花的气味，而后只感觉脚下一个踉跄，我便扑向了坚硬的水泥地。说不清楚是鼻子酸楚导致的，还是那些谈话导致的，我很没出息的哭了。兴许是一个男生在地上哭太不正常了，许多学生看了一眼，便从旁边绕着走开了，只有一个人还在那里站着。</span></p><p><span>谁说只有女生是水做的，我的泪这样流着，浸湿了那一块地板，直到太阳将它的色彩收回。</span></p><p><span>最后他似乎等得有些不耐烦了，说到：“楠羽，我也是服了你了。”还没等到他前来扶我，我便颓然地站了起来，慢慢地往前走，没有理会他的意思。而他竟然也在后面慢慢地跟着。夏天的江水总是那么的充沛，还带着有些凉爽的冷风，慢慢地吹干我的泪痕。终于，我被他跟的不耐烦了，想要转头制止一下自以为是的跟踪狂。</span></p><p><span>神奇的是，他不是江夏，而是吴维，我班上的值日生。跟着我的理由，仅仅是因为怕我出事。</span></p><p><span>不知道为什么，这件事在学校里面传开了，最后传到我耳朵里的版本是，我在江夏面前碰瓷，希望能引起江夏的注意，可惜江夏看都没看我一眼，留我自己一个人在水泥地上伤心。于是，我的名字从“大作家”变成了“碰瓷仔”，班上时不时因为我的故事，充满一次又一次快活的空气。幸好吴维打破了这个方兴将艾的谎言，说，是他不小心绊到的我。</span></p><p><span>在那天，我请吴维吃了一顿饭，刷了一餐我从未吃过的山珍海味，我说不清是感谢他的澄清，还是补偿自己的心灵，但从那天起，我便成为吴维的朋友。</span></p><h2 id='无作为'><span>无作为</span></h2><p><span>当一个值日生的朋友有诸多好处，比如可以不用担心迟到的记名、也可以大胆地在眼保健操时间续写我的小说。我和他时常互相请对方吃饭，但为了防止他也变成同学们的笑柄，吃饭时都会挑一个学校里合适的角落，互相分享着饭菜、学习的经验、甚至是我从来都没注意的八卦。那段时间可以是我学习时期最好的一段时间，至少充满着快乐、充满着纯真，总归没有带着黑暗的谎言。</span></p><p><span>他是知道我有在写带有小说色彩的日记的。恰好的是，他也喜欢看，凭着每天省出来的一毛两毛，买下了一本又一本的小说杂刊。我将那不成熟的文字递给他，吴维双手接过，很仔细的看着那笨拙的笔迹，丝毫没有注意对面的人已经紧张到颤抖。那时，秋天的阳光正好被学校那劣质的窗帘切碎，一片一片地撒在地上、课桌上、他的笑脸上。“很好啊，只不过为什么还没有完结？快点写，我想看结尾。”等来这句从未听过的话，我揪着衣角的手终于是放开了。</span></p><p><span>那天依旧是照常，两份食堂里最便宜且没营养的饭菜，仍是铺撒着树荫的绿草地，树上甚至还有昨天小雨留下的水珠，不时掉落下来成为我们笑话对方幸运的契机。这时，一群人从我们身边经过，带头的人却停了下来。那是江夏，A班的江夏。</span></p><p><span>吴维一脸冷漠地看着江夏，江夏板着一张脸看了我和吴维许久，最后丢出了几张零钱，换上一副嘲弄的笑容。“这样吧，我们几个也不想出去了，不如你帮我们出去买个饮料，我就不把你们的事说出去。”我至今还记得吴维那时难看的脸色，却没再看清江夏的表情，因为我低着头，不敢看任何人。因为在被误解时，任何的解释都会变成他们口中的解释，给予他们足够的素材，再编织出一场谎言。我和吴维就是其中的主角。</span></p><p><span>对不起，我是个没出息的人，面对这种事情只会选择逃避、选择老子所教“无为”，而后远离了现实中的吴维。在那之后，好几次从他身边经过，能看见他兴奋但很快低迷的脸，但我还是选择了离去。不是因为嫌弃他，而是因为，幸福共同分享是对的，承受一种痛苦的人一个就够了。不想让我惟一一个知心的朋友也跟我一样被嘲弄。久而久之，我跟吴维便断了联系。</span></p><p><span>于是，我的生活又回到那日复一日的重复之中，唯一有所见好的是叫我外号的人慢慢地变少了，总感觉有点诡异，但这毕竟是一个好的发展。</span></p><h2 id='不可笑'><span>不可笑</span></h2><p><span>人们常说，单调的生活总是度日如年，但我确实喜欢呆在这个重复的舒适圈，将我的小说慢慢地延展，延展到每天的每时每刻。可成绩却慢慢走起了下坡路，终于走到了老师们的底线。</span></p><p><span>于是，再一次被请进办公室，感受了一下午茶的味道，那是一泡莓茶，刚入口的时候一阵苦，若是耐心地想要等待它那令人咂味无穷的回甘，会发现，这茶本就是苦的，不管泡了多久，泡得有多稀，它到头来还是苦涩上叠了一层又一层的苦。</span></p><p><span>等几个老师逐个分析完我的试卷、逐个跟我谈学习方法后，墙上的石英钟已经走了大半圈，手中的茶杯早已映出了夕阳的余晖，波光粼粼，却没有太大的波澜。</span></p><p><span>“老师们都相信你，你这样子努力，之后一定会有好的结果的。”这句话虽然很假大空，但却是我对那个下午唯二的回忆，第一的是那泡苦不堪言的茶，像极了我和吴维的关系。断开时一阵苦，总以为能看到自己或是对方更好的生活，但被时光浸泡后，留下的还是苦。</span></p><p><span>阳光碎了，留在校园的人都在整理东西，准备开心地度过很短但是难得的寒假。我收拾了一下东西，也走出了教室。</span></p><p><span>很不巧，又在门口看到了江夏。他还是和第一次那样靠在校门那，但是我对他的态度却变了太多。从内心里，我还是觉得，都是他破坏了我和吴维间的关系。如果不是那个中午，我的生活至少还能充实。所以，我这次没有像之前那样从他身边经过，而是走到了校门的另一侧，却看到对方的脸色明显变了许多。</span></p><p><span>“楠羽，你就这么不想看我么？”身后传来一句惹人烦的声音。我不加理会，仍是一个劲地往前走。本以为他会就此放弃，谁知学习好的人大多有个坏脾气：当恼羞成怒时，他就真的成怒了。一阵脚步声，一股桂花香，又是一个踉跄，我又摔倒了，比上一次摔的还惨，用脸和大地来了一次深度交流。</span></p><p><span>感情上一次我也是这样摔得么？被某一个人不要脸地绊腿而摔的？旁边传来江夏小人得志的笑声。额头一阵阵痛感逼迫着我清醒，也逼迫着我要再一次流出眼泪。但是我尽力地忍着那股酸劲。一直这样，忍了许久。忍到干坏事的人从嘲笑变成无奈。</span></p><p><span>“好了，是我错了，你先起来可以么？”听到这我才缓缓地起身，走上了回家的路。除了吴维，我觉得我不会再容忍别人的笑。</span></p><h2 id='冬日寒'><span>冬日寒</span></h2><p><span>冬天的风景确实不比夏时的好，在南方的小城里，看不见结冰的河流，也看不见漫天的雪花。冬天带来的改变就是那要死的昼夜大温差和自带魔法穿透的寒风。尤其是江边，说是新时代的刻骨铭心也不为过。</span></p><p><span>我能觉得他还在后面跟着我，就像那个夏天吴维做的那样。突然又开始觉得江夏很烦，能让我一直想起吴维。于是乎，我加快脚步，企图甩开他，可是他却亦步亦趋，追我追得游刃有余。我之前真该好好锻炼一下。</span></p><p><span>很快地，走到我家楼下，可能是我转过头的动作过于迅猛，明显感到江夏后退了一步，满是思索的表情骤然间皱起了眉。我上下打量了一下，感觉江夏不是像个家住在危房里的人，于是说道：“我家到了，承蒙您老费心跟踪，我没有什么事，还请不要再纠结你过分的玩笑。”</span></p><p><span>“没事，我就逛逛。”</span></p><p><span>我撇了撇嘴，转身进了一家小吃店。这个时候爸妈应该都在家和别人玩着纸牌，我已经习惯在外面解决三餐的生活方式。每月的一两天都会有一两个穿白衣服的人来我家，每次他们都是拨弄着纸牌，当然这些都是我看到过的，我看到过的还有爸妈拿出一沓沓的钞票给他们，或许是爸妈的赌运真的太差？这我便不知道了。而其他时候，爸妈们都不在家，跟我说是去外地打工，每次还会嘱咐我回到家要关好门窗、有外人来就说他们不在。也许是在躲债？这我也不知道。</span></p><p><span>毕竟，大人的事，小孩子最好别问。</span></p><p><span>我点了一碗面后却看到江夏很坚定地坐在我的对面。然后边用眼神嫌弃着没擦干净的桌子，边点了一碗和我一样的面。在等饭的时候，我和他没有一点交流，我也不想和他有任何交流。</span></p><p><span>很快，面就端上来了。因为我是店里的常客，我的那一碗的量明显比江夏多了一圈，但也只是能确保今晚不会饿得程度。明天早晨我便会被饿醒，然后等待中午的午饭。但最后我解决完我那一份时，却看到江夏还在艰难地吃着还剩半碗的面。这时我才清楚地看见他的脸庞，虽然脸上有几点雀斑，但是却被店内的灯光照得特别的白。这时江夏抬头，和我对视了一眼，然后将碗往我这推了推。</span></p><p><span>“你，还要么？实在不行我可以再点一份。”这次却带着很有点委屈的情绪。我二话不说便拿过了那碗面，人在温饱和面子之间，我会选择温饱。在那之后，我不知为何就被江夏纠缠住了。</span></p><h2 id='忘景甜'><span>忘景甜</span></h2><p><span>真正认识江夏后，我才发现一件事，有些学习好的人不仅会学习，还会玩。我一直以为，玩只会差生的代名词。</span></p><p><span>游乐场、奶茶店、体育场……之前因经济原因从未去过的地方，江夏都带我过了个遍。我不知道是因为他自己的愧疚，还是其他说不清楚的原因，总感觉他在努力地讨好我，完全没有刚开始那种放浪的语态。</span></p><p><span>我记得最清楚的便是在他的生日会上。那天来了很多人，全都聚集在了他家，很可惜的是，里面的人我都不认识。男生们都在积极地讨论着NBA、讨论着游戏赛事。女生们都在和江夏你来我往地聊天。就只有我在里面显得格格不入，于是只能在其中默默发挥我吃东西的特长。很快我便把那个八寸的双层蛋糕干掉了四分之一，全场的目光都在很诧异地瞟着我，只有江夏带着无奈和略微有些生气的语气说：“慢点吃啊，小心噎死。”</span></p><p><span>我感觉到了尴尬的气氛在客厅里蔓延着，于是我便起身对他说到，“我吃饱了，先走了。”</span></p><p><span>没想到的是，我刚出了他家的门，他便跑了出来，“楠羽，你就是存心想让我尴尬吧！”</span></p><p><span>“没有啊，我这个人就是这样的，你不喜欢我这样的性格，大可不必和我交友”我自始自终都没有和江夏提出交朋友的邀请，一切都是他一厢情愿而已。</span></p><p><span>可没想到他的回答确实让我无语了许久，“谁叫我喜欢你这样子的性格呢？”眼角中还带着一股戏弄的笑气。</span></p><p><span>更没想到的是在第二天的升旗仪式上他的所作所为。</span></p><p><span>我照常因为迟到而被抓到操场末尾，在仪式结束后，人群中便出现了江夏的身影，他就这样在大庭广众之下走到我的身边。仍是一股桂花香，嵌入我的鼻腔，顺着我的口腔上皮细胞涌进我的大脑。人群中出现一阵惊呼，我急忙推开了他。</span></p><p><span>我这样子轻轻的推，对于他来说应该不算大力，也许是他跟本便没有想到我会推开他。反正最后他在人海中砸出了一圈空地。</span></p><p><span>“我对你这么好，我能给你的有这么多，我到底哪一点不如吴维。”我第一次看见他生气的样子，之前他对每一件事似乎都带着无所谓的态度。“要不是我，你现在都还被嘲笑着！”</span></p><p><span>这倒令我发愣了一下，原来我的外号是这样消失的。我看了看地上的他，再看了看周围的群众，还是觉得我不适合这样的场面。于是一句都没说，留他在人群的交头接耳中默默冷静。我接受不了。</span></p><h2 id='难掩与'><span>难掩与</span></h2><p><span>可很奇怪的是，这次的事却没有在他们口中传开。可能我学习好的话也不会这么容易变成笑柄了吧。于是在纠结着学习好带来的特权和江夏失去联系了许久。但很快的，我便不再想学习好和学习不好的事了。因为在那之后的一次考试后。我知道吴维被叫回家反省了，反省的理由是：他走进了扫描室偷改了自己的分数。</span></p><p><span>顿时间，我周围的人的讨论对象都集中在吴维身上。我实在不相信他会做出这样的事。所以在那个周末，我带上了我写完的三本速写本，走进了吴维的家中。吴维的妈妈很是热心，忙把我引进了客厅，然后叫完吴维便退出了家门，留给我和吴维两个人单独的空间。我没见过有哪位家长在知道孩子作弊时能这么淡定。</span></p><p><span>吴维很快拖着颓丧的步子走到我旁边的椅子上坐下。眼神中再也没有之前看到的神采。看到他这个状态，我想不出什么话语安慰他，只是将那三本递给了他，“为什么会这样？”</span></p><p><span>“我没有这么做，你信么？”吴维喃喃道。“我相信你，但是为什么会这样？”</span></p><p><span>我的问语而后等来的是长时间的寂静。“你相信我就好，这样就够了。”他收起了那三本速写本，起身，缓缓向着他来时的路走去。主人下了催客令，我也不好在此地久留。但在走出门的那一下，也许是我幻听，我隐隐约约地听到里屋传来一声叫喊：“我情愿不要那个什么破农招。”但又好像什么都没有听到。</span></p><p><span>能和吴维的事联系在一起的，我只能想到江夏，想到江夏在升旗那天喊出的话。于是，又是一个夏天的下午，我约他到了小城的江边，花费几顿餐钱买下了一大瓶可乐，和他一人一杯地喝起来。</span></p><p><span>“吴维的事是不是你弄的？”我首先打破只有江流响的空气。“他自己作弊的，关我什么事。”江夏耸了耸肩，眼神当中充满着不屑，“话说这可乐怎么有点苦？”</span></p><p><span>“没有吧，保质期还没过呢。”我深呼吸了一口气，“那行吧，从今天开始，重新做人。”我向他摇了摇手中的杯子。</span></p><p><span>“傻瓜，我早就说过吴维那人就那样。”他用杯子打了一下我的头，然后倒满一杯和喝我一饮而尽。</span></p><p><span>聊着聊着，江夏琢磨出了不对劲，“你到底往可乐放了什么东西？”放了一整瓶我的药，我现在每天都要吃的盐酸文拉法辛缓释胶囊，还有我之前吃的单胺氧化酶抑制剂。但我已经没有力气再对他说出什么话，只是朝他微微地笑了笑。两种药物在我和他的体内混合，为视线增添了淡黄的光晕和慢慢扩大的白色。我感觉到他趴到了我身上，没有什么责怪，只有弱弱的一句：“生日快乐啊，楠羽……”</span></p><p><span>最后只剩令人烦的耳鸣。</span></p><h2 id='徨中慌'><span>徨中慌</span></h2><p><span>我是知道这其中发生什么的。在我去找江夏之前，不单是女生，男生的第六感有时也很准。一切不是江夏所起，但结局如此终归是江夏所致。</span></p><p><span>一个家长能爱孩子爱到什么程度？能为他的前途铺好金碧辉煌的道路，尽管违背孩子的本心。一个领导能爱名誉还到什么地步？能爱到为出一个重点大学农招生而走进扫描室的大门。当那个人下定决心换上一张写满正确答案的答题卡时，又会是什么心情呢？当东窗事发之后，父母又是怎么面对自己的孩子的呢？这些我便不得而知了。如果江夏不去传播这个看似谣言的真相，一切都会被埋在阴暗潮湿的地里吧。</span></p><p><span>既然被挖出来了，那就接受现实吧。</span></p><p><span>突然间耳边传来熟悉的医疗器械的声音，晃晃乎，睁开了双眼，药效带来的副作用明显还很大。只能看清一阵绿色和模糊的人影。</span></p><p><span>过了一会，我终于能把眼前的事物看得真切。在我恢复的过程中，有很多人走进了我的病房。有我的父母、月月来我家的穿白衣服的人、我的班主任。看到我醒了，那些穿白衣服的便把我爸妈拉了出去，手里拿着厚厚的文档。留下了班主任和我尴尬着。</span></p><p><span>我扭动了一下头部，看到旁边病床上空无一人。于是便问班主任：“老师，江夏呢？”“什么？”</span></p><p><span>“江夏呀，A班的江夏呀，在我身上的那个。”“没有啊江夏，只有你一个人在那里？”</span></p><p><span>“那江夏人呢？”“你就是江夏啊。”</span></p><p><span>我很认真的看着班主任，希望从她眼中看出撒谎的眼神，当我看到的只有不明所以。</span></p><p><span>“那F班的吴维呢？”“F班的吴维？没有这个人啊！F班的人我都认识。”</span></p><p><span>我开始焦急起来，但却看到班主任连忙推动了在我旁边的注射器，然后对我轻轻说：“你刚刚起来，意识不清楚很正常，好好休息一会。“而后便走出了病房。留我一个人在那里慢慢地思索。</span></p><p><span>说谎，他们一定是在说谎。</span></p><p><span>之后半个月，我终于恢复了正常，但吴维和江夏却从我的生活中消失了，我不知道他们在哪，好像根本就没出现过一样。更不可思议的是，周边的人都不叫我楠羽，而叫我江夏。</span></p><p><span>但我应该是楠羽啊。于是，我拿出了速写本，在上面写了一个大大的”谎“字，然后写下了第一句话：</span></p><p><span>“我是一个生活的差生，仅仅因为处在这个谎的世界。”</span></p><p><span>随后一想，还是把“生活的”划去，因为生活不也是一场谎么？</span></p><h2 id='作者的话'><span>作者的话</span></h2><p><span>说在前面，小说是小说，现实是现实，请不要把作者代入。我在写的过程中感觉我写出来的东西好像在哪里看过，但反复求索，还是没有找到我看过的那篇小说，也许真的写得和那篇小说差不多，也许可能是我的海马体确实出了点问题。希望有胡适之的传人能帮我检索一番。理论上在学校的小报刊发文章应该正经点，但是写作这件事，本就应该按照自己心情走，所以我还是按照我心里所想写下这个小故事，而且由于个人网文写多了，故事的展开莫名其妙地带上一股轻浮地网文风，写得又长又臭，有些地方可能也就写的有点看不懂，大家看完图一乐便好。</span></p><p><span>以下涉及剧透，已经戴上有色眼镜观看这篇小说的最好别看，防止有色眼镜被我砸坏。当然，想摘掉有色眼镜的，可以看看可能是胡说的谎。(点击空白处即可)</span></p><span><div class="text-container" tabindex="0" aria-label="点击显示文字">其实在小说中的吴维、楠羽、江夏都是同一个人，那都是我，所以看到这里就别再想着最后几章发生的事了，那只是我接受我自己的过程（或许我投错位置了？应该投心理咨询室才对）。他们只不过代表着我高中时期经历过的心理纠缠和生活状况。江夏是外部想要我的外在，楠羽是我自身的向往，吴维是我不得不面对的现实，毕竟吴维，无为。在高一的时候，我走上楠羽的道路，只不过我的“速写本”是番茄小说，写的是一时冲动写下的性转。当然不是以我为原型，而是以我一个性童的好朋友。原本是想记录一下他的糗事，写着写着就变了味道，最后便形成了我第一本签约的小说（当然，最后还是在去年被封掉了）。之后又零零散散写了三本，便被现实强行拉回我作为高中生的位置。在文中，吴维原先的命运应该是跳楼而亡，因为我想反抗这个现实。但我没有写，因为怕过不了审。而后我才成为江夏，有很多原因，不好明说。原先这篇想写的，楠羽其实是一个女生，但在我另一个好姐妹的要求下，写成了男生。希望我不会在墙上看到我被挂上去。</div><span/><p><span>在这其中有很多小细节都出现在我身边过，只不过当事人不一定都是我，比如说数试卷之类等等。但是还有一些细节可能需要你的细品、可能有关你的学习、有关你之后可能会碰上的事。在这不好说，但希望你不会碰到这些事。</span></p><span>所以这篇小说本质上是送给我周边朋友回忆高中的引子，以及是给我自己挫折不堪的高中和生活得的一个纪念，当然也是送给愿意花费一点时间扫描二维码的你。祝你高中生活快乐，生活的每一天都遍布着真诚，而非谎言。</span></p></div></div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const textContainer = document.querySelector('.text-container');
+
+    textContainer.addEventListener('click', function() {
+      this.classList.add('visible');
+    });
+
+    document.addEventListener('click', function(event) {
+      if (!textContainer.contains(event.target)) {
+        textContainer.classList.remove('visible');
+      }
+    });
+  });
+</script>
+</body>
+</html>
